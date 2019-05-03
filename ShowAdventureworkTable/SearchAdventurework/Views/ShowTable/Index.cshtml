@@ -1,0 +1,90 @@
+﻿@model ICollection<SearchAdventurework.Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Product</title>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #TableWrapper {
+            margin-top: 0px;
+        }
+        #SearchWrapper {
+            z-index:9999;
+            margin-top: 10px;
+            margin-bottom:5px;
+           border-radius:20px;
+            padding:15px;
+            position:sticky;
+            top:6px;
+            background-color:rgba(55, 87, 115, 0.31);
+        }
+        #btn{
+           width:60px;
+           
+        }
+       
+     .col-sm-3{
+        text-align:center;
+     }
+    </style>
+</head>
+<body>
+    <div class="col-sm-12 container-fluid form-group" id="SearchWrapper">
+        <form>
+        <div class="row" >
+            <div class="col-sm-1">
+                <input type="submit" name="submit" value="Search" class=" btn btn-secondary btn-block btn-sm" id="btn" />
+            </div>
+            <div class="col-sm-2">
+                <input type="number" name="sproductid" placeholder=@TempData["Sproductid"] "ProductID"  />
+            </div>
+            <div class="col-sm-3">
+                <input type="text" name="sname" placeholder=@TempData["sname"] "Name" />
+            </div>
+            <div class="col-sm-3">
+                <input type="text" name="scolor" placeholder=@TempData["scolor"] "Color" />
+            </div>
+            <div class="col-sm-3">
+                <input type="text" name="slistprice" placeholder=@TempData["slistprice"] "ListPrice" />
+            </div>
+            
+            
+        </div> 
+            </form>
+    </div>
+    <div class="col-sm-12 " id="TableWrapper"> 
+        <table class="table table-bordered table-striped table-hover table-secondary ">
+            
+            <thead>
+                <tr>
+
+
+                    <th>ProductID</th>
+                    <th style="width:300px;">Name</th>
+                    <th>Color</th>
+                    <th>ListPrice</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductID</td>
+                        <td>@item.Name</td>
+                        <td>@item.Color</td>
+                        <td>@item.ListPrice.ToString("c")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
